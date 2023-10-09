@@ -11,8 +11,13 @@ import 'ejs';
 //Routes
 import { connectMongoDb } from './src/config/database.js';
 
+//Schemas
+import { Author } from './src/schema/Author.js';
+import { Genre } from './src/schema/Genre.js';
+import { Books } from './src/schema/Books.js';
 
 
+//Middlewares
 const app = express();
 app.use(cors({
     origin: '*',
@@ -34,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 
-
+//conection Port and db
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
