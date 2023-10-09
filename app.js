@@ -8,8 +8,12 @@ import 'dotenv/config';
 import 'ejs';
 
 
-//Routes
+//Route Databse
 import { connectMongoDb } from './src/config/database.js';
+//Routes acction
+import { routerAuthors } from './src/routes/authors.routes.js';
+
+
 
 //Schemas
 import { Author } from './src/schema/Author.js';
@@ -39,8 +43,18 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 
+
+
+
+
 //conection Port and db
 const port = process.env.PORT || 3000
+
+
+
+
+app.use('/api/authors', routerAuthors)
+
 
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
