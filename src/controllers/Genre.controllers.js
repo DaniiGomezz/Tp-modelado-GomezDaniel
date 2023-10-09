@@ -1,3 +1,4 @@
+import { Books } from "../schema/Books.js";
 import { Genre } from "../schema/Genre.js";
 
 // Create genre
@@ -24,6 +25,8 @@ export const getAllGenres = async (req, res) => {
         res.status(500).send({mensage: "Internal error when getting generics"},error);
     }
 }
+
+
 //delete for id genre
 export const deleteGenre = async (req, res) => {
     const genreId = req.params.id
@@ -55,3 +58,18 @@ export const updateGenre = async (req, res) => {
       res.status(500).json({ message: 'Something goes wrong' })
     }
   }
+
+  
+  export const booksByGenre = async (req, res) => {
+    const { id } = req.params
+    try {
+        const books = await Books.find({ genre: id })
+        res.status(200).json(
+            { message: "En esta categoria hay " + books.length + " libros", books }
+        )
+    }
+    catch (error) {
+        res.status(500).send(error)
+    }
+};
+

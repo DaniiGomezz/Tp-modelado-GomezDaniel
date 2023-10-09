@@ -10,9 +10,12 @@ import 'ejs';
 
 //Route Databse
 import { connectMongoDb } from './src/config/database.js';
+
 //Routes acction
 import { authorsR } from './src/routes/authors.routes.js';
 import { genreR } from './src//routes/genre.routes.js';
+import { bookR } from './src/routes/book.routes.js';
+import {fileRouter } from './src/routes/file.routes.js';
 
 
 //Schemas
@@ -52,9 +55,10 @@ const port = process.env.PORT || 3000
 
 
 
-
+app.use('/api/books', bookR)
 app.use('/api/authors', authorsR)
 app.use('/api/genre', genreR)
+app.use('/', fileRouter)
 
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
