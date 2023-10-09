@@ -14,7 +14,7 @@ export const createBook = async (req, res) => {
     }
 
     const file = req.files.FILE;
-    const path = `public/uploads${file.name}`;
+    const path = `C:/Users/Usuario/Desktop/TP-Books>/${file.name}`;
 
     file.mv(path, async (err) => {
       if (err) {
