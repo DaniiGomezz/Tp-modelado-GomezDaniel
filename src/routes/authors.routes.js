@@ -1,15 +1,15 @@
 import { Router } from "express";
-const routerAuthors = Router();
+const authorsR = Router();
 import { CreateAuthor, deleteAuthor, getAllAuthors, getAuthorById, updateAuthor } from "../controllers/Authors.controllers.js";
 
-routerAuthors.get('/', getAllAuthors)
+authorsR.get('/', getAllAuthors)
 
-routerAuthors.get('/:id', getAuthorById)
+authorsR.get('/:id', getAuthorById)
 
-routerAuthors.post('/', CreateAuthor)
+authorsR.post('/', CreateAuthor)
 
-routerAuthors.put('/:id', updateAuthor)
+authorsR.put('/:id', updateAuthor)
 
-routerAuthors.delete('/:id', deleteAuthor)
+authorsR.delete('/:id', deleteAuthor)
 
-export { routerAuthors };
+export { authorsR };
